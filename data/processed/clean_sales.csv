@@ -1,0 +1,2 @@
+id,transaction_id,date,sku,product,quantity,revenue,category,created_at
+1,TXN-1776671817,2026-04-20,P001,Coffee Beans,1,5.99,Beverages,2026-04-20 07:56:57
