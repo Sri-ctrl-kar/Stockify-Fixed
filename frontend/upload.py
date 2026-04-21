@@ -34,8 +34,8 @@ try:
     from ingestion.sales.sales_pipeline import process_sales_file
 except Exception:
     try:
-        from Ingestion.inventory.inventory_pipeline import process_inventory_file
-        from Ingestion.sales.sales_pipeline import process_sales_file
+        from ingestion.inventory.inventory_pipeline import process_inventory_file
+        from ingestion.sales.sales_pipeline import process_sales_file
     except Exception:
         pass
 
