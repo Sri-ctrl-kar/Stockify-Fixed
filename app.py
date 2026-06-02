@@ -9,7 +9,7 @@ import numpy as np
 from datetime import timedelta
 import os
 
-from analytics import (
+from core_analytics import (
     load_and_clean,
     compute_summary_kpis,
     compute_product_metrics,

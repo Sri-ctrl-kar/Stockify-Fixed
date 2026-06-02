@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import warnings
 import json
 import urllib.request
+import typing
 
 warnings.filterwarnings("ignore")
 
@@ -24,7 +25,7 @@ OPTIONAL_COLS_MAP = {
 }
 
 
-def detect_column(df: pd.DataFrame, aliases: list) -> str | None:
+def detect_column(df: pd.DataFrame, aliases: list) -> typing.Optional[str]:
     for alias in aliases:
         if alias in df.columns:
             return alias
@@ -201,7 +202,7 @@ def compute_weekly_pattern(df: pd.DataFrame, col_map: dict) -> pd.DataFrame:
     return weekly
 
 
-def compute_category_breakdown(df: pd.DataFrame, col_map: dict) -> pd.DataFrame | None:
+def compute_category_breakdown(df: pd.DataFrame, col_map: dict) -> typing.Optional[pd.DataFrame]:
     cat_col = col_map.get("category")
     if not cat_col:
         return None
@@ -241,7 +242,7 @@ def detect_slow_movers(product_metrics: pd.DataFrame, threshold_pct: float = 20.
 # ─────────────────────────────────────────────
 
 def forecast_product(df: pd.DataFrame, col_map: dict, product_name: str,
-                     periods: int = 30) -> tuple[pd.DataFrame | None, str]:
+                     periods: int = 30) -> typing.Tuple[typing.Optional[pd.DataFrame], str]:
     """
     Forecast next `periods` days for a given product.
     Returns (forecast_df, method_used)
@@ -346,7 +347,7 @@ def forecast_product(df: pd.DataFrame, col_map: dict, product_name: str,
 
 
 def compute_reorder_alerts(product_metrics: pd.DataFrame,
-                           forecast_map: dict | None = None) -> pd.DataFrame:
+                           forecast_map: typing.Optional[dict] = None) -> pd.DataFrame:
     """
     Generate reorder recommendations based on velocity and optional forecast.
     forecast_map: {product_name: avg_daily_units_next_30d}
@@ -380,7 +381,7 @@ def compute_reorder_alerts(product_metrics: pd.DataFrame,
 
 def build_ai_context(kpis: dict, product_metrics: pd.DataFrame,
                      monthly_trend: pd.DataFrame, slow_movers: pd.DataFrame,
-                     category_df: pd.DataFrame | None) -> str:
+                     category_df: typing.Optional[pd.DataFrame]) -> str:
     """Build a concise data summary to send to Claude."""
 
     top5 = product_metrics.head(5)[["Product", "Total Units", "Total Revenue", "ABC Class"]].to_string(index=False)
