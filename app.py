@@ -623,7 +623,7 @@ with tab1:
             "Total Revenue": "₹{:,.0f}",
             "Revenue Share %": "{:.1f}%",
             "Avg Daily Units": "{:.1f}",
-        }).background_gradient(subset=["Total Revenue"], cmap="YlGnBu"),
+        }),
         use_container_width=True,
         height=380,
     )
