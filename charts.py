@@ -67,7 +67,7 @@ def chart_top_products(product_metrics: pd.DataFrame, n: int = 10):
     
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text=f"Top {n} Products by Revenue", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text=f"<b>Top {n} Products by Revenue</b>", font=dict(size=14, color=TEXT)),
         xaxis=dict(title="Revenue (₹)", showgrid=True),
         yaxis=dict(title=""),
         height=max(320, n * 36)
@@ -101,7 +101,7 @@ def chart_abc_pie(product_metrics: pd.DataFrame):
     )
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text="ABC Revenue Contribution", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text="<b>ABC Revenue Contribution</b>", font=dict(size=14, color=TEXT)),
         height=320,
         legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5)
     )
@@ -157,7 +157,7 @@ def chart_monthly_trend(monthly_trend: pd.DataFrame):
 
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text="Monthly Store Performance Trend", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text="<b>Monthly Store Performance Trend</b>", font=dict(size=14, color=TEXT)),
         height=360,
         legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5)
     )
@@ -189,7 +189,7 @@ def chart_weekly_pattern(weekly_df: pd.DataFrame):
     
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text="Average Revenue by Day of Week", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text="<b>Average Revenue by Day of Week</b>", font=dict(size=14, color=TEXT)),
         xaxis=dict(title=""),
         yaxis=dict(title="Avg Revenue (₹)"),
         height=320
@@ -220,7 +220,7 @@ def chart_category_breakdown(category_df: pd.DataFrame):
     
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text="Revenue Breakdown by Category", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text="<b>Revenue Breakdown by Category</b>", font=dict(size=14, color=TEXT)),
         xaxis=dict(title="Total Revenue (₹)"),
         yaxis=dict(title=""),
         height=320
@@ -291,7 +291,7 @@ def chart_forecast(prod_hist: pd.DataFrame, future_fc: pd.DataFrame, prod: str, 
 
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text=f"Demand Forecast — {prod}", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text=f"<b>Demand Forecast — {prod}</b>", font=dict(size=14, color=TEXT)),
         xaxis=dict(title="Timeline", gridcolor="#2A2F45"),
         yaxis=dict(title="Daily Quantity Sold (Units)", gridcolor="#2A2F45"),
         height=380,
@@ -333,7 +333,7 @@ def chart_slow_movers(slow_movers: pd.DataFrame):
     
     fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
-        title=dict(text="Critically Slow-Moving Products (Lowest Velocity)", font=dict(size=14, color=TEXT, weight="bold")),
+        title=dict(text="<b>Critically Slow-Moving Products (Lowest Velocity)</b>", font=dict(size=14, color=TEXT)),
         xaxis=dict(title="Total Units Sold"),
         yaxis=dict(title=""),
         height=320
