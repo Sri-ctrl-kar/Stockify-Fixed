@@ -65,12 +65,12 @@ def chart_top_products(product_metrics: pd.DataFrame, n: int = 10):
         hovertemplate="<b>%{y}</b><br>Revenue: ₹%{x:,.2f}<extra></extra>"
     ))
     
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text=f"Top {n} Products by Revenue", font=dict(size=14, color=TEXT, weight="bold")),
         xaxis=dict(title="Revenue (₹)", showgrid=True),
         yaxis=dict(title=""),
-        height=max(320, n * 36),
-        **TEMPLATE["layout"]
+        height=max(320, n * 36)
     )
     return fig
 
@@ -99,11 +99,11 @@ def chart_abc_pie(product_metrics: pd.DataFrame):
         textinfo="percent",
         hovertemplate="<b>%{label}</b><br>Revenue: ₹%{value:,.2f}<br>Share: %{percent}<extra></extra>"
     )
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text="ABC Revenue Contribution", font=dict(size=14, color=TEXT, weight="bold")),
         height=320,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5),
-        **TEMPLATE["layout"]
+        legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5)
     )
     return fig
 
@@ -155,11 +155,11 @@ def chart_monthly_trend(monthly_trend: pd.DataFrame):
         secondary_y=True,
     )
 
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text="Monthly Store Performance Trend", font=dict(size=14, color=TEXT, weight="bold")),
         height=360,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
-        **TEMPLATE["layout"]
+        legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5)
     )
     
     fig.update_yaxes(title_text="Revenue (₹)", secondary_y=False, gridcolor="#2A2F45", title_font=dict(color=TEAL))
@@ -187,12 +187,12 @@ def chart_weekly_pattern(weekly_df: pd.DataFrame):
         hovertemplate="Day: %{x}<br>Avg Daily Revenue: ₹%{y:,.2f}<extra></extra>"
     ))
     
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text="Average Revenue by Day of Week", font=dict(size=14, color=TEXT, weight="bold")),
         xaxis=dict(title=""),
         yaxis=dict(title="Avg Revenue (₹)"),
-        height=320,
-        **TEMPLATE["layout"]
+        height=320
     )
     return fig
 
@@ -218,12 +218,12 @@ def chart_category_breakdown(category_df: pd.DataFrame):
         hovertemplate="<b>Category: %{y}</b><br>Revenue: ₹%{x:,.2f}<extra></extra>"
     ))
     
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text="Revenue Breakdown by Category", font=dict(size=14, color=TEXT, weight="bold")),
         xaxis=dict(title="Total Revenue (₹)"),
         yaxis=dict(title=""),
-        height=320,
-        **TEMPLATE["layout"]
+        height=320
     )
     return fig
 
@@ -289,13 +289,13 @@ def chart_forecast(prod_hist: pd.DataFrame, future_fc: pd.DataFrame, prod: str, 
         hoverinfo="skip"
     ))
 
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text=f"Demand Forecast — {prod}", font=dict(size=14, color=TEXT, weight="bold")),
         xaxis=dict(title="Timeline", gridcolor="#2A2F45"),
         yaxis=dict(title="Daily Quantity Sold (Units)", gridcolor="#2A2F45"),
         height=380,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5),
-        **TEMPLATE["layout"]
+        legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5)
     )
     return fig
 
@@ -331,11 +331,11 @@ def chart_slow_movers(slow_movers: pd.DataFrame):
         hovertemplate="<b>%{y}</b><br>Units Sold: %{x:.0f}<extra></extra>"
     ))
     
+    fig.update_layout(**TEMPLATE["layout"])
     fig.update_layout(
         title=dict(text="Critically Slow-Moving Products (Lowest Velocity)", font=dict(size=14, color=TEXT, weight="bold")),
         xaxis=dict(title="Total Units Sold"),
         yaxis=dict(title=""),
-        height=320,
-        **TEMPLATE["layout"]
+        height=320
     )
     return fig
