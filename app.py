@@ -318,11 +318,29 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("### 🤖 AI Insights")
+    
+    # Pre-fill from environment variable or local .env file if available
+    env_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not env_key:
+        if os.path.exists(".env"):
+            try:
+                with open(".env", "r") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#") and "=" in line:
+                            k, v = line.split("=", 1)
+                            if k.strip() == "ANTHROPIC_API_KEY":
+                                env_key = v.strip().strip("'\"")
+                                break
+            except Exception:
+                pass
+                
     api_key = st.text_input(
         "Anthropic API Key",
         type="password",
+        value=env_key,
         placeholder="sk-ant-...",
-        help="Paste your Claude API Key (console.anthropic.com) to generate plain-English inventory audits.",
+        help="Configure ANTHROPIC_API_KEY in your .env file or system environment to enable zero-configuration loading.",
     )
     enable_ai = bool(api_key.strip()) if api_key else False
 
